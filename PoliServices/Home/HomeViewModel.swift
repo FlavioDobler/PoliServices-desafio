@@ -10,15 +10,30 @@ import UIKit
 
 class HomeViewModel {
     
-    
-    func checkButton(){
+    public func serviceCardColor ( label: String) -> UIColor {
+        switch label{
+        case "Código" :
+            return .cyan
+        case "Carreira" :
+            return .green
+        case "Entrevista":
+            return .magenta
+        default:
+            return .brown
+        }
         
     }
-    
-    
 }
 
-
+//        if serviceCard.typeServiceLabel.text == "Código"{
+//            serviceCard.serviceBackgroundView.backgroundColor = .cyan
+//        } else if serviceCard.typeServiceLabel.text == "Carreira" {
+//            serviceCard.serviceBackgroundView.backgroundColor = .green
+//        } else if serviceCard.typeServiceLabel.text == "Entrevista" {
+//            serviceCard.serviceBackgroundView.backgroundColor = .magenta
+//        } else {
+//            serviceCard.serviceBackgroundView.backgroundColor = .brown
+//        }
     
     
 
