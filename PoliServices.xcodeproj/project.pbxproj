@@ -7,29 +7,39 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4C30F0A629390FC6002C3068 /* ServiceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C30F0A529390FC6002C3068 /* ServiceCollectionViewCell.swift */; };
-		4C30F0A829391842002C3068 /* SelectDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C30F0A729391842002C3068 /* SelectDateViewController.swift */; };
+		3A1D89212A37445F00339A72 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1D89202A37445F00339A72 /* HomeVC.swift */; };
+		3A1D89232A37467800339A72 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1D89222A37467800339A72 /* HomeScreen.swift */; };
+		3A1D89252A38388000339A72 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1D89242A38388000339A72 /* HomeViewModel.swift */; };
+		3A99F38C2A3AAC1500EE4A6E /* CategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A99F38B2A3AAC1500EE4A6E /* CategoryVC.swift */; };
+		3A99F3B62A3B665200EE4A6E /* CategoryScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A99F3B52A3B665200EE4A6E /* CategoryScreen.swift */; };
+		3A99F3B82A3B9F1400EE4A6E /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A99F3B72A3B9F1400EE4A6E /* CategoryModel.swift */; };
+		3A99F3BA2A3BA1DD00EE4A6E /* CustomCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A99F3B92A3BA1DD00EE4A6E /* CustomCollectionCell.swift */; };
+		3A99F3DD2A3FD9B800EE4A6E /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A99F3DC2A3FD9B800EE4A6E /* CalendarVC.swift */; };
+		3A99F3DF2A4153EC00EE4A6E /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A99F3DE2A4153EC00EE4A6E /* CategoryViewModel.swift */; };
+		3A99F3E12A44D29200EE4A6E /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A99F3E02A44D29200EE4A6E /* CalendarViewModel.swift */; };
 		4C55034529379F3600699589 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C55034429379F3600699589 /* AppDelegate.swift */; };
 		4C55034729379F3600699589 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C55034629379F3600699589 /* SceneDelegate.swift */; };
-		4C55034929379F3600699589 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C55034829379F3600699589 /* ViewController.swift */; };
-		4C55034C29379F3600699589 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C55034A29379F3600699589 /* Main.storyboard */; };
 		4C55034E29379F3900699589 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C55034D29379F3900699589 /* Assets.xcassets */; };
 		4C55035129379F3900699589 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C55034F29379F3900699589 /* LaunchScreen.storyboard */; };
-		4C5503592937D32A00699589 /* NovoServicoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5503582937D32A00699589 /* NovoServicoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4C30F0A529390FC6002C3068 /* ServiceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCollectionViewCell.swift; sourceTree = "<group>"; };
-		4C30F0A729391842002C3068 /* SelectDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateViewController.swift; sourceTree = "<group>"; };
+		3A1D89202A37445F00339A72 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		3A1D89222A37467800339A72 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		3A1D89242A38388000339A72 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		3A99F38B2A3AAC1500EE4A6E /* CategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryVC.swift; sourceTree = "<group>"; };
+		3A99F3B52A3B665200EE4A6E /* CategoryScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryScreen.swift; sourceTree = "<group>"; };
+		3A99F3B72A3B9F1400EE4A6E /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
+		3A99F3B92A3BA1DD00EE4A6E /* CustomCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionCell.swift; sourceTree = "<group>"; };
+		3A99F3DC2A3FD9B800EE4A6E /* CalendarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarVC.swift; sourceTree = "<group>"; };
+		3A99F3DE2A4153EC00EE4A6E /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
+		3A99F3E02A44D29200EE4A6E /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		4C55034129379F3600699589 /* PoliServices.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PoliServices.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C55034429379F3600699589 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C55034629379F3600699589 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4C55034829379F3600699589 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		4C55034B29379F3600699589 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4C55034D29379F3900699589 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C55035029379F3900699589 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4C55035229379F3900699589 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4C5503582937D32A00699589 /* NovoServicoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovoServicoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +53,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A1D891F2A37444100339A72 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				3A1D89202A37445F00339A72 /* HomeVC.swift */,
+				3A1D89222A37467800339A72 /* HomeScreen.swift */,
+				3A1D89242A38388000339A72 /* HomeViewModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		3A99F38A2A3AAB1500EE4A6E /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				3A99F38B2A3AAC1500EE4A6E /* CategoryVC.swift */,
+				3A99F3B52A3B665200EE4A6E /* CategoryScreen.swift */,
+				3A99F3B72A3B9F1400EE4A6E /* CategoryModel.swift */,
+				3A99F3B92A3BA1DD00EE4A6E /* CustomCollectionCell.swift */,
+				3A99F3DE2A4153EC00EE4A6E /* CategoryViewModel.swift */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		3A99F3DB2A3FB13900EE4A6E /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				3A99F3DC2A3FD9B800EE4A6E /* CalendarVC.swift */,
+				3A99F3E02A44D29200EE4A6E /* CalendarViewModel.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
 		4C55033829379F3600699589 = {
 			isa = PBXGroup;
 			children = (
@@ -62,16 +103,14 @@
 		4C55034329379F3600699589 /* PoliServices */ = {
 			isa = PBXGroup;
 			children = (
+				3A99F3DB2A3FB13900EE4A6E /* Calendar */,
+				3A99F38A2A3AAB1500EE4A6E /* Category */,
+				3A1D891F2A37444100339A72 /* Home */,
 				4C55034429379F3600699589 /* AppDelegate.swift */,
 				4C55034629379F3600699589 /* SceneDelegate.swift */,
-				4C55034829379F3600699589 /* ViewController.swift */,
-				4C55034A29379F3600699589 /* Main.storyboard */,
-				4C30F0A729391842002C3068 /* SelectDateViewController.swift */,
 				4C55034D29379F3900699589 /* Assets.xcassets */,
 				4C55034F29379F3900699589 /* LaunchScreen.storyboard */,
 				4C55035229379F3900699589 /* Info.plist */,
-				4C5503582937D32A00699589 /* NovoServicoViewController.swift */,
-				4C30F0A529390FC6002C3068 /* ServiceCollectionViewCell.swift */,
 			);
 			path = PoliServices;
 			sourceTree = "<group>";
@@ -137,7 +176,6 @@
 			files = (
 				4C55035129379F3900699589 /* LaunchScreen.storyboard in Resources */,
 				4C55034E29379F3900699589 /* Assets.xcassets in Resources */,
-				4C55034C29379F3600699589 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,11 +186,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C30F0A829391842002C3068 /* SelectDateViewController.swift in Sources */,
-				4C30F0A629390FC6002C3068 /* ServiceCollectionViewCell.swift in Sources */,
-				4C55034929379F3600699589 /* ViewController.swift in Sources */,
+				3A99F3E12A44D29200EE4A6E /* CalendarViewModel.swift in Sources */,
+				3A99F38C2A3AAC1500EE4A6E /* CategoryVC.swift in Sources */,
+				3A99F3B82A3B9F1400EE4A6E /* CategoryModel.swift in Sources */,
+				3A1D89252A38388000339A72 /* HomeViewModel.swift in Sources */,
+				3A99F3DD2A3FD9B800EE4A6E /* CalendarVC.swift in Sources */,
+				3A99F3BA2A3BA1DD00EE4A6E /* CustomCollectionCell.swift in Sources */,
+				3A1D89212A37445F00339A72 /* HomeVC.swift in Sources */,
+				3A99F3DF2A4153EC00EE4A6E /* CategoryViewModel.swift in Sources */,
+				3A99F3B62A3B665200EE4A6E /* CategoryScreen.swift in Sources */,
+				3A1D89232A37467800339A72 /* HomeScreen.swift in Sources */,
 				4C55034529379F3600699589 /* AppDelegate.swift in Sources */,
-				4C5503592937D32A00699589 /* NovoServicoViewController.swift in Sources */,
 				4C55034729379F3600699589 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -160,14 +204,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		4C55034A29379F3600699589 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4C55034B29379F3600699589 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		4C55034F29379F3900699589 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -307,11 +343,11 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Poli Services";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -341,11 +377,11 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Poli Services";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
