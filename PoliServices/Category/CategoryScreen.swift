@@ -26,8 +26,6 @@ class CategoryScreen: UIView {
         collection.register(CustomCollectionCell.self, forCellWithReuseIdentifier: CustomCollectionCell.identifier)
         let layout : UICollectionViewFlowLayout = UICollectionViewFlowLayout.init()
         layout.scrollDirection = .vertical
-       // layout.minimumLineSpacing = 3
-        //layout.minimumInteritemSpacing = 2
         collection.setCollectionViewLayout(layout, animated: false)
         collection.backgroundColor = UIColor(red: 192/255, green: 219/255, blue: 234/255, alpha: 1)
         return collection

@@ -24,8 +24,6 @@ class CustomCollectionCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    
     lazy var serviceTypeLabel : UILabel = {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false

@@ -17,24 +17,31 @@ class HomeVC: UIViewController {
     var titleLeadingAnchor : NSLayoutConstraint?
     var dateLabelLeadingAnchor : NSLayoutConstraint?
     var cardTopAnchor : NSLayoutConstraint?
-   
+    var dateToCompare : String = ""
+    private var timer: Timer?
     var viewModel : HomeViewModel = HomeViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red: 192/255, green: 219/255, blue: 234/255, alpha: 1)
         self.layout()
-        self.checkButton()
+        self.initTimer()
+       
+       
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+       
+        
         
     }
     
-
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.animate()
-        self.checkButton()
         self.setColor()
-        
+        self.checkButton()
+        self.animate()
         
     }
     
@@ -112,31 +119,48 @@ class HomeVC: UIViewController {
         return button
     }()
     
-   
-    
-   
-    
     @objc func didTapServiceButton(){
         let categoryVC = CategoryVC()
         self.navigationController?.pushViewController(categoryVC, animated: true)
     }
     
-
-    private func checkButton(){
-        if let text = serviceCard.informedDateLabel.text, !text.isEmpty {
-            serviceRequestButton.isHidden = true
-            serviceCard.isHidden = false
-            self.animateCard()
-        }else{
-            serviceRequestButton.isHidden = false
-            serviceCard.isHidden = true 
-        }
+    func setDefault() {
+        serviceCard.informedDateLabel.text = UserDefaults.standard.value(forKey: "Date") as? String
+        serviceCard.nextServiceLabel.text = UserDefaults.standard.value(forKey: "Categoria") as? String
     }
+
+   
+    
+    private func checkButton(){
+       let hasService = viewModel.checkButton(serviceCard: serviceCard, button: serviceRequestButton)
+        if hasService {
+            self.presentAnimateCard()
+        } else {
+            self.dismissCard()
+            UserDefaults.resetStandardUserDefaults()
+        }
+            
+    }
+
+    
+    private func initTimer(){
+            let now: Date = Date()
+            let calendar: Calendar = Calendar.current
+            let currentSeconds: Int = calendar.component(.second, from: now)
+            let timer = Timer(
+                fire: now.addingTimeInterval(Double(60 - currentSeconds + 1)),
+                interval: 60,
+                repeats: true,
+                block: { (t: Timer) in
+                    self.checkButton()
+                })
+            RunLoop.main.add(timer, forMode: .default)
+            self.timer = timer
+        }
     
     private func setColor(){
         serviceCard.serviceBackgroundView.backgroundColor = viewModel.serviceCardColor(label: serviceCard.typeServiceLabel.text ?? "")
     }
-    
     
     private func layout() {
         self.view.addSubview(titleLabel)
@@ -148,22 +172,18 @@ class HomeVC: UIViewController {
         self.view.addSubview(serviceRequestButton)
         self.view.addSubview(serviceCard)
         
-        
         //Title
         NSLayoutConstraint.activate([
             self.titleLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 32),
-            //self.titleLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 22),
             self.titleLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -22)
         ])
         
         self.titleLeadingAnchor = self.titleLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor,constant: leadingEdgeOffScreen)
         self.titleLeadingAnchor?.isActive = true
         
-        
         //Date
         NSLayoutConstraint.activate([
             self.dateLabel.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 4),
-            //self.dateLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 22)
         ])
         
         self.dateLabelLeadingAnchor = self.dateLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor,constant: leadingEdgeOffScreen)
@@ -206,13 +226,14 @@ class HomeVC: UIViewController {
         
         //Service Card View
         NSLayoutConstraint.activate([
-            //self.serviceCard.topAnchor.constraint(equalTo: self.lineView.bottomAnchor,constant: 10),
             self.serviceCard.leadingAnchor.constraint(equalTo: self.view.leadingAnchor,constant: 20),
             self.serviceCard.trailingAnchor.constraint(equalTo: self.view.trailingAnchor,constant: -20)
         ])
         
         self.cardTopAnchor = self.serviceCard.topAnchor.constraint(equalTo: self.lineView.topAnchor,constant: topEdgeOffScreen)
         self.cardTopAnchor?.isActive = true
+        
+        
             
     }
 }
@@ -229,15 +250,22 @@ extension HomeVC {
         }
         animator1.startAnimation()
         animator2.startAnimation()
-        
     }
     
-    private func animateCard(){
+    private func presentAnimateCard(){
         let animator3 = UIViewPropertyAnimator(duration: 2, curve: .easeInOut){
             self.cardTopAnchor?.constant = self.topOnScreen
             self.view.layoutIfNeeded()
         }
         animator3.startAnimation()
+    }
+    
+    private func dismissCard(){
+        let animator4 = UIViewPropertyAnimator(duration: 2, curve: .easeInOut){
+            self.cardTopAnchor?.constant = self.topEdgeOffScreen
+            self.view.layoutIfNeeded()
+        }
+        animator4.startAnimation()
     }
 }
  

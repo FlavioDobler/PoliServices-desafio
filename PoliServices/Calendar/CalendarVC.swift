@@ -19,6 +19,8 @@ class CalendarVC: UIViewController {
         }
     
     var home : HomeVC?
+    let defaults = UserDefaults.standard
+    var dateCompare : String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +49,6 @@ class CalendarVC: UIViewController {
      lazy var serviceLabel : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        // label.text = "Selecione a data e hora \npara reservar o serviço de \( categoryName ?? "")"
         label.contentMode = .left
         label.font = UIFont.systemFont(ofSize: 28, weight: .bold)
         label.numberOfLines = 0
@@ -70,8 +71,6 @@ class CalendarVC: UIViewController {
         serviceLabel.text = "Selecione a data e hora para reservar \no serviço de \(categoryName ?? "")"
     }
     
-
-   
     lazy var datePicker: UIDatePicker = {
             let picker = UIDatePicker()
             picker.locale = .current
@@ -85,27 +84,25 @@ class CalendarVC: UIViewController {
             return picker
         }()
     
-   
-    
-    
     @objc func didTapDateSelector(){
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
             let dateString = dateFormatter.string(from: datePicker.date)
-            
             dateLabel.text = "Data selecionada: \(dateString)"
+            dateCompare = dateString
     }
    
     @objc func didTapConfirm(){
         if let homeVC = navigationController?.viewControllers.first(where: { $0 is HomeVC }) as? HomeVC {
-            
+            defaults.set(categoryName, forKey: "Categoria")
+            defaults.set(dateLabel.text, forKey: "Date")
+            defaults.set(datePicker.date.timeIntervalSince1970, forKey: "service_date")
             homeVC.serviceCard.typeServiceLabel.text = categoryName
-            //print("Selected date:", dateLabel.text!)
             homeVC.serviceCard.informedDateLabel.text = dateLabel.text
+            homeVC.dateToCompare = dateCompare
             navigationController?.popToViewController(homeVC, animated: true)
                     }
     }
-    
     
     private func addSubviews(){
         self.view.addSubview(datePicker)
@@ -113,8 +110,6 @@ class CalendarVC: UIViewController {
         self.view.addSubview(dateLabel)
         self.view.addSubview(confirmButton)
     }
-    
-    
     
     private func setupConstraints(){
         NSLayoutConstraint.activate([
@@ -135,7 +130,6 @@ class CalendarVC: UIViewController {
             self.confirmButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor,constant: 40),
             self.confirmButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor,constant: -40),
             self.confirmButton.heightAnchor.constraint(equalToConstant: 50)
-                    
                ])
     }
     
