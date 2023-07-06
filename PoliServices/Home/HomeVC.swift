@@ -119,6 +119,25 @@ class HomeVC: UIViewController {
         return button
     }()
     
+    lazy var cancelServiceButton : UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Cancelar Serviço", for: .normal)
+        button.setTitleColor(.cyan, for: .normal)
+        button.layer.cornerRadius = 20
+        button.backgroundColor = .lightGray
+        button.addTarget(self, action: #selector(didTapCancel), for: .touchUpInside)
+        button.isHidden = true
+        return button
+    }()
+    
+    @objc func didTapCancel(){
+        serviceCard.isHidden = true
+        serviceRequestButton.isHidden = false
+        cancelServiceButton.isHidden = true 
+        UserDefaults.resetStandardUserDefaults()
+    }
+    
     @objc func didTapServiceButton(){
         let categoryVC = CategoryVC()
         self.navigationController?.pushViewController(categoryVC, animated: true)
@@ -128,20 +147,17 @@ class HomeVC: UIViewController {
         serviceCard.informedDateLabel.text = UserDefaults.standard.value(forKey: "Date") as? String
         serviceCard.nextServiceLabel.text = UserDefaults.standard.value(forKey: "Categoria") as? String
     }
-
-   
     
     private func checkButton(){
        let hasService = viewModel.checkButton(serviceCard: serviceCard, button: serviceRequestButton)
         if hasService {
             self.presentAnimateCard()
+            self.cancelServiceButton.isHidden = false
         } else {
-            self.dismissCard()
-            UserDefaults.resetStandardUserDefaults()
+            self.cancelServiceButton.isHidden = true
+            return 
         }
-            
     }
-
     
     private func initTimer(){
             let now: Date = Date()
@@ -171,6 +187,7 @@ class HomeVC: UIViewController {
         self.view.addSubview(lineView)
         self.view.addSubview(serviceRequestButton)
         self.view.addSubview(serviceCard)
+        self.view.addSubview(cancelServiceButton)
         
         //Title
         NSLayoutConstraint.activate([
@@ -233,8 +250,15 @@ class HomeVC: UIViewController {
         self.cardTopAnchor = self.serviceCard.topAnchor.constraint(equalTo: self.lineView.topAnchor,constant: topEdgeOffScreen)
         self.cardTopAnchor?.isActive = true
         
-        
+        //Cancel Button
+        NSLayoutConstraint.activate([
+            self.cancelServiceButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant:   -100),
+            self.cancelServiceButton.leadingAnchor.constraint(equalTo: serviceRequestButton.leadingAnchor),
+            self.cancelServiceButton.trailingAnchor.constraint(equalTo: serviceRequestButton.trailingAnchor),
+            self.cancelServiceButton.heightAnchor.constraint(equalToConstant: 45)
             
+        
+        ])
     }
 }
 
@@ -258,14 +282,6 @@ extension HomeVC {
             self.view.layoutIfNeeded()
         }
         animator3.startAnimation()
-    }
-    
-    private func dismissCard(){
-        let animator4 = UIViewPropertyAnimator(duration: 2, curve: .easeInOut){
-            self.cardTopAnchor?.constant = self.topEdgeOffScreen
-            self.view.layoutIfNeeded()
-        }
-        animator4.startAnimation()
     }
 }
  

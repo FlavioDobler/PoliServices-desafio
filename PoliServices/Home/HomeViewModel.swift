@@ -33,11 +33,10 @@ class HomeViewModel {
         
         if hasService {
             serviceCard.informedDateLabel.text = UserDefaults.standard.string(forKey: "Date")
-            serviceCard.nextServiceLabel.text = UserDefaults.standard.string(forKey: "Categoria")
+            serviceCard.typeServiceLabel.text = UserDefaults.standard.string(forKey: "Categoria")
             button.isHidden = true
             serviceCard.isHidden = false
             return true
-           // self.presentAnimateCard() por na HomeVC
         }else{
             UserDefaults.standard.removeObject(forKey: "Date")
             UserDefaults.standard.removeObject(forKey: "Categoria")
