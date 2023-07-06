@@ -123,7 +123,7 @@ class CalendarVC: UIViewController {
             self.datePicker.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
             self.datePicker.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor, constant: -40),
             
-            self.dateLabel.topAnchor.constraint(equalTo: self.datePicker.bottomAnchor,constant: 100),
+            self.dateLabel.topAnchor.constraint(equalTo: self.datePicker.bottomAnchor,constant: 150),
             self.dateLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
             
             self.confirmButton.topAnchor.constraint(equalTo: self.dateLabel.bottomAnchor,constant: 20),

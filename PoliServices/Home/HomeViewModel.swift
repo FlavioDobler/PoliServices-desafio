@@ -25,7 +25,7 @@ class HomeViewModel {
         
     }
    
-    func checkButton(serviceCard: HomeScreen, button : UIButton) -> Bool {
+    func checkButton(serviceCard: HomeScreen, button : UIButton, cancelButton: UIButton) -> Bool {
         let currentDate = Date()
         let serviceDateInteger = UserDefaults.standard.integer(forKey: "service_date")
         let serviceDate = Date(timeIntervalSince1970: TimeInterval(serviceDateInteger))
@@ -36,35 +36,18 @@ class HomeViewModel {
             serviceCard.typeServiceLabel.text = UserDefaults.standard.string(forKey: "Categoria")
             button.isHidden = true
             serviceCard.isHidden = false
+            cancelButton.isHidden = false
             return true
         }else{
             UserDefaults.standard.removeObject(forKey: "Date")
             UserDefaults.standard.removeObject(forKey: "Categoria")
             button.isHidden = false
-            serviceCard.isHidden = true
+            cancelButton.isHidden = true 
             return false 
        }
     }
     
-//    private func checkButton(){
-//        let currentDate = Date()
-//        let serviceDateInteger = UserDefaults.standard.integer(forKey: "service_date")
-//        let serviceDate = Date(timeIntervalSince1970: TimeInterval(serviceDateInteger))
-//        let hasService = serviceDate >= currentDate
-//
-//        if hasService {
-//            serviceCard.informedDateLabel.text = UserDefaults.standard.string(forKey: "Date")
-//            serviceCard.nextServiceLabel.text = UserDefaults.standard.string(forKey: "Categoria")
-//            serviceRequestButton.isHidden = true
-//            serviceCard.isHidden = false
-//            self.presentAnimateCard()
-//        }else{
-//            UserDefaults.standard.removeObject(forKey: "Date")
-//            UserDefaults.standard.removeObject(forKey: "Categoria")
-//            serviceRequestButton.isHidden = false
-//            serviceCard.isHidden = true
-//        }
-//    }
+    
 //
 //    private func initTimer(){
 //            let now: Date = Date()

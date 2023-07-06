@@ -26,16 +26,8 @@ class HomeVC: UIViewController {
         self.view.backgroundColor = UIColor(red: 192/255, green: 219/255, blue: 234/255, alpha: 1)
         self.layout()
         self.initTimer()
-       
-       
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-       
-        
-        
-    }
+  
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -132,10 +124,11 @@ class HomeVC: UIViewController {
     }()
     
     @objc func didTapCancel(){
-        serviceCard.isHidden = true
+        self.dismissCard()
         serviceRequestButton.isHidden = false
-        cancelServiceButton.isHidden = true 
-        UserDefaults.resetStandardUserDefaults()
+        cancelServiceButton.isHidden = true
+        UserDefaults.standard.removeObject(forKey: "Date")
+        UserDefaults.standard.removeObject(forKey: "Categoria")
     }
     
     @objc func didTapServiceButton(){
@@ -149,13 +142,11 @@ class HomeVC: UIViewController {
     }
     
     private func checkButton(){
-       let hasService = viewModel.checkButton(serviceCard: serviceCard, button: serviceRequestButton)
+       let hasService = viewModel.checkButton(serviceCard: serviceCard, button: serviceRequestButton,cancelButton: cancelServiceButton)
         if hasService {
             self.presentAnimateCard()
-            self.cancelServiceButton.isHidden = false
         } else {
-            self.cancelServiceButton.isHidden = true
-            return 
+            self.dismissCard()
         }
     }
     
@@ -282,6 +273,14 @@ extension HomeVC {
             self.view.layoutIfNeeded()
         }
         animator3.startAnimation()
+    }
+    
+    private func dismissCard(){
+        let animator4 = UIViewPropertyAnimator(duration: 2, curve: .easeInOut){
+            self.cardTopAnchor?.constant = self.topEdgeOffScreen
+            self.view.layoutIfNeeded()
+        }
+        animator4.startAnimation()
     }
 }
  

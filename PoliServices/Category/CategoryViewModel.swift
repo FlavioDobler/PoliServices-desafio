@@ -16,8 +16,8 @@ class CategoryViewModel {
             populateCategories()
         }
         
-        private func populateCategories() { // Deveria ter preenchido o array na ViewModel?
-            categories = CategoryModel.getCategory()
+        private func populateCategories() { 
+            categories = getCategory()
         }
         
         func numberOfCategories() -> Int {
@@ -27,6 +27,16 @@ class CategoryViewModel {
         func category(at indexPath: IndexPath) -> CategoryModel {
             return categories[indexPath.row]
         }
+    
+     func getCategory () -> [CategoryModel]{
+        let category = [
+            CategoryModel(service: "Código", image: UIImage(named: "pencil.slash")?.withRenderingMode(.alwaysTemplate), color: .cyan),
+            CategoryModel(service: "Carreira", image: UIImage(named: "graduationcap.circle.fill")?.withRenderingMode(.alwaysTemplate), color: .green),
+            CategoryModel(service: "Entrevista", image: UIImage(named:"books.vertical.fill")?.withRenderingMode(.alwaysTemplate), color: .magenta),
+            CategoryModel(service: "Feedback", image: UIImage(named:"scribble.variable")?.withRenderingMode(.alwaysTemplate), color: .brown)
+        ]
+        return category
+    }
     
 }
 
