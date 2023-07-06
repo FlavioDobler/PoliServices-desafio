@@ -129,6 +129,7 @@ class HomeVC: UIViewController {
         cancelServiceButton.isHidden = true
         UserDefaults.standard.removeObject(forKey: "Date")
         UserDefaults.standard.removeObject(forKey: "Categoria")
+        UserDefaults.standard.removeObject(forKey: "service_date")
     }
     
     @objc func didTapServiceButton(){
