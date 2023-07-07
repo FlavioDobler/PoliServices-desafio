@@ -18,7 +18,7 @@ class HomeVC: UIViewController {
     var dateLabelLeadingAnchor : NSLayoutConstraint?
     var cardTopAnchor : NSLayoutConstraint?
     var dateToCompare : String = ""
-    private var timer: Timer?
+    
     var viewModel : HomeViewModel = HomeViewModel()
     
     override func viewDidLoad() {
@@ -151,20 +151,12 @@ class HomeVC: UIViewController {
         }
     }
     
-    private func initTimer(){
-            let now: Date = Date()
-            let calendar: Calendar = Calendar.current
-            let currentSeconds: Int = calendar.component(.second, from: now)
-            let timer = Timer(
-                fire: now.addingTimeInterval(Double(60 - currentSeconds + 1)),
-                interval: 60,
-                repeats: true,
-                block: { (t: Timer) in
-                    self.checkButton()
-                })
-            RunLoop.main.add(timer, forMode: .default)
-            self.timer = timer
+    private func initTimer() {
+        viewModel.initTimer { [weak self] in
+            self?.checkButton()
+            return true
         }
+    }
     
     private func setColor(){
         serviceCard.serviceBackgroundView.backgroundColor = viewModel.serviceCardColor(label: serviceCard.typeServiceLabel.text ?? "")

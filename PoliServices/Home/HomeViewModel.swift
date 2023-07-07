@@ -11,6 +11,9 @@ import UIKit
 
 class HomeViewModel {
     
+    private var timer: Timer?
+    
+    
     public func serviceCardColor ( label: String) -> UIColor {
         switch label{
         case "Código" :
@@ -47,22 +50,18 @@ class HomeViewModel {
        }
     }
     
-    
-//
-//    private func initTimer(){
-//            let now: Date = Date()
-//            let calendar: Calendar = Calendar.current
-//            let currentSeconds: Int = calendar.component(.second, from: now)
-//            let timer = Timer(
-//                fire: now.addingTimeInterval(Double(60 - currentSeconds + 1)),
-//                interval: 60,
-//                repeats: true,
-//                block: { (t: Timer) in
-//                    self.checkButton()
-//                })
-//            RunLoop.main.add(timer, forMode: .default)
-//            self.timer = timer
-//        }
-//
-    
+    func initTimer(callback: @escaping () -> Bool) {
+        let now = Date()
+        let calendar = Calendar.current
+        let currentSeconds = calendar.component(.second, from: now)
+        let timer = Timer(fire: now.addingTimeInterval(Double(60 - currentSeconds + 1)), interval: 60, repeats: true) { timer in
+            let shouldContinue = callback()
+            if !shouldContinue {
+                timer.invalidate()
+            }
+        }
+        RunLoop.main.add(timer, forMode: .default)
+        self.timer = timer
+    }
 }
+    
