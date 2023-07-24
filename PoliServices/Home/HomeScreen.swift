@@ -9,11 +9,15 @@ import UIKit
 
 
 
+
 class HomeScreen: UIView {
+    
+    var delegate : HomeScreenDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         layout()
+       
     }
     
     required init?(coder: NSCoder) {
@@ -98,4 +102,5 @@ class HomeScreen: UIView {
     }
    
 }
+
 

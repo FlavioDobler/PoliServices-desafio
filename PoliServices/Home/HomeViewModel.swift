@@ -8,9 +8,15 @@
 import Foundation
 import UIKit
 
+protocol HomeScreenDelegate : AnyObject {
+    func hasService()
+    func showButton()
+}
 
-class HomeViewModel {
+class HomeViewModel   {
     
+    weak var delegate : HomeScreenDelegate?
+   
     private var timer: Timer?
     
     
@@ -40,12 +46,14 @@ class HomeViewModel {
             button.isHidden = true
             serviceCard.isHidden = false
             cancelButton.isHidden = false
+            delegate?.hasService()
             return true
         }else{
             UserDefaults.standard.removeObject(forKey: "Date")
             UserDefaults.standard.removeObject(forKey: "Categoria")
             button.isHidden = false
             cancelButton.isHidden = true 
+            delegate?.showButton()
             return false 
        }
     }

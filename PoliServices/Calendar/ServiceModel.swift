@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct Service {
+    var Name: String
+    var Date : String
+}

@@ -26,6 +26,7 @@ class HomeVC: UIViewController {
         self.view.backgroundColor = UIColor(red: 192/255, green: 219/255, blue: 234/255, alpha: 1)
         self.layout()
         self.initTimer()
+        viewModel.delegate = self
     }
   
     
@@ -143,12 +144,8 @@ class HomeVC: UIViewController {
     }
     
     private func checkButton(){
-       let hasService = viewModel.checkButton(serviceCard: serviceCard, button: serviceRequestButton,cancelButton: cancelServiceButton)
-        if hasService {
-            self.presentAnimateCard()
-        } else {
-            self.dismissCard()
-        }
+        _ = viewModel.checkButton(serviceCard: serviceCard, button: serviceRequestButton,cancelButton: cancelServiceButton)
+        
     }
     
     private func initTimer() {
@@ -274,6 +271,16 @@ extension HomeVC {
             self.view.layoutIfNeeded()
         }
         animator4.startAnimation()
+    }
+}
+
+extension HomeVC : HomeScreenDelegate {
+    func hasService() {
+        self.presentAnimateCard()
+    }
+    
+    func showButton() {
+        self.dismissCard()
     }
 }
  

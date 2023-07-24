@@ -21,6 +21,8 @@ class CalendarVC: UIViewController {
     var home : HomeVC?
     let defaults = UserDefaults.standard
     var dateCompare : String = ""
+    var viewModel : CalendarViewModel = CalendarViewModel()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,24 +87,21 @@ class CalendarVC: UIViewController {
         }()
     
     @objc func didTapDateSelector(){
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
-            let dateString = dateFormatter.string(from: datePicker.date)
+            let dateString = datePicker.date.toString(dateFormat: "dd/MM/yyyy HH:mm")
             dateLabel.text = "Data selecionada: \(dateString)"
             dateCompare = dateString
     }
    
     @objc func didTapConfirm(){
-        if let homeVC = navigationController?.viewControllers.first(where: { $0 is HomeVC }) as? HomeVC {
-            defaults.set(categoryName, forKey: "Categoria")
-            defaults.set(dateLabel.text, forKey: "Date")
-            defaults.set(datePicker.date.timeIntervalSince1970, forKey: "service_date")
-            homeVC.serviceCard.typeServiceLabel.text = categoryName
-            homeVC.serviceCard.informedDateLabel.text = dateLabel.text
-            homeVC.dateToCompare = dateCompare
-            navigationController?.popToViewController(homeVC, animated: true)
-                    }
-    }
+            if let homeVC = navigationController?.viewControllers.first(where: { $0 is HomeVC }) as? HomeVC {
+                viewModel.setDefaults(categoria: categoryName!, data: dateLabel, timeInterval: datePicker)
+                //            homeVC.serviceCard.typeServiceLabel.text = categoryName
+                //            homeVC.serviceCard.informedDateLabel.text = dateLabel.text
+                homeVC.dateToCompare = dateCompare
+                navigationController?.popToViewController(homeVC, animated: true)
+            }
+        }
+    
     
     private func addSubviews(){
         self.view.addSubview(datePicker)
