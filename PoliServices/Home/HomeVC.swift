@@ -28,14 +28,18 @@ class HomeVC: UIViewController {
         self.initTimer()
         viewModel.delegate = self
     }
-  
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.setColor()
         self.checkButton()
         self.animate()
-        
+        self.setColor()
     }
     
     let serviceCard: HomeScreen = {
@@ -141,6 +145,7 @@ class HomeVC: UIViewController {
     func setDefault() {
         serviceCard.informedDateLabel.text = UserDefaults.standard.value(forKey: "Date") as? String
         serviceCard.nextServiceLabel.text = UserDefaults.standard.value(forKey: "Categoria") as? String
+        self.setColor()
     }
     
     private func checkButton(){

@@ -28,8 +28,10 @@ class HomeViewModel   {
             return .green
         case "Entrevista":
             return .magenta
-        default:
+        case "Feedback":
             return .brown
+        default:
+            return .clear
         }
         
     }
