@@ -53,7 +53,9 @@ class HomeViewModel   {
         }else{
             UserDefaults.standard.removeObject(forKey: "Date")
             UserDefaults.standard.removeObject(forKey: "Categoria")
-            button.isHidden = false
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.4) {
+                button.isHidden = false
+            }
             cancelButton.isHidden = true 
             delegate?.showButton()
             return false 
